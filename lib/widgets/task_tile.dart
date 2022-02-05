@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 class TaskTile extends StatelessWidget {
-
+  late final String title;
   late final String taskTitle;
   late final VoidCallback leftArrowCallback;
   late final VoidCallback rightArrowCallback;
 
   TaskTile(
       {
+        required this.title,
         required this.taskTitle,
         required this.leftArrowCallback,
         required this.rightArrowCallback});
@@ -23,15 +24,17 @@ class TaskTile extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
-              Text(
-                '<',
+              Visibility(
+                  child: Text('<',),
+                  visible: title == 'A' ? false : true,
               ),
               Text(
                 taskTitle,
               ),
-              Text(
-                '>',
-              )
+              Visibility(
+                child: Text('>',),
+                visible: title == 'D' ? false : true,
+              ),
             ],
           ),
         ),

@@ -2,18 +2,15 @@ import 'package:flutter/foundation.dart';
 import 'dart:collection';
 import 'package:trello_app/models/task.dart';
 
-enum ItemType { A, B , C, D }
-
-class TasksProvider extends ChangeNotifier {
+class TaskProviderD extends ChangeNotifier {
   // private한 _task로 만들어 외부에서의 직접추가를 막는다
   List<Task> _tasks = [
-    Task(name: 'Item 1'),
-    Task(name: 'Item 2'),
-    Task(name: 'Item 3'),
-    Task(name: 'Item 4'),
-    Task(name: 'Item 5'),
-
+    Task(name: 'D Item 1'),
+    Task(name: 'D Item 2'),
+    Task(name: 'D Item 3'),
+    Task(name: 'D Item 4'),
   ];
+
 
   // private한 _task를 조회하는 메소드를 만들고, 수정불가능한 List에 담아서 조회한다
   UnmodifiableListView<Task> get tasks {
@@ -28,7 +25,7 @@ class TasksProvider extends ChangeNotifier {
   // _task 를 추가한후, 상태를 참조하고 있는 곳에 notify 한다
   void addTask(String newTaskTitle) {
     final task = Task(name: newTaskTitle);
-    _tasks.add(task);
+    // _tasks.add(task);
     notifyListeners();
   }
 
@@ -38,5 +35,9 @@ class TasksProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-
+  // _task 를 삭제한후, 상태를 참조하고 있는 곳에 notify 한다
+  void deleteTask(Task task) {
+    // _tasks.remove(task);
+    notifyListeners();
+  }
 }
